@@ -1,38 +1,15 @@
-import React, { Component } from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableHighlight
-} from 'react-native'
-import CameraButton from './src/components/CameraButton'
-import Welcome from './src/components/Welcome'
-import logo from './src/assets/images/optile.png'
+import React from 'react'
+import { DrawerNavigator } from 'react-navigation'
+import HomeScreen from './src/screens/HomeScreen'
+import CameraScreen from './src/screens/CameraScreen'
 
-export default class App extends Component<{}> {
-  onPressCameraButton() {
-    alert('adasda')
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image style={styles.logo} source={logo} />
-        <Welcome /> 
-        <CameraButton onPress={this.onPressCameraButton} />  
-      </View>
-    )
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#f5f5f5',
+const App = DrawerNavigator({
+  Home: {
+    screen: HomeScreen,
   },
-  logo: {
-    margin: 16
-  }
+  Camera: {
+    screen: CameraScreen,
+  },
 })
+
+export default App

@@ -5,19 +5,17 @@ import {
   View
 } from 'react-native'
 
-export default class Welcome extends Component<{}> {
-  render() {
-    return (
-      <View>
-       	<Text style={styles.welcome}>
-          Welcome to Optile's menu app
-        </Text> 
-        <Text style={styles.welcomeDesciption}>
-          Here you can upload the menu and share with your colleagues in Slack
-        </Text>   
-      </View>
-    )
-  }
+const Welcome = () => {
+  return (
+    <View>
+     	<Text style={styles.welcome}>
+        Welcome to Optile's menu app
+      </Text> 
+      <Text style={styles.welcomeDesciption}>
+        Here you can upload the menu and share with your colleagues in Slack
+      </Text>   
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -32,3 +30,5 @@ const styles = StyleSheet.create({
     margin: 16
   }
 })
+
+export default Welcome
