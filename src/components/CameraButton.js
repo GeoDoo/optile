@@ -3,39 +3,32 @@ import {
   StyleSheet,
   View,
   Image,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native'
-import button from '../assets/images/cam.png'
+import CameraIcon from './CameraIcon'
 
 const CameraButton = (props) => {
   return (
-    <TouchableHighlight
+    <TouchableOpacity
       style={styles.camera}
       onPress={props.onPress}>
       <View style={styles.cameraButton}>
-        <Image                       
-          source={button}
-        />
+        <CameraIcon />
       </View>
-    </TouchableHighlight>    
+    </TouchableOpacity>    
   )
 }
 
 const styles = StyleSheet.create({
   camera: {
-    position: 'absolute',
-    bottom: 20,
-    borderRadius: 9999
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    margin: 24
   },
   cameraButton: {
-    width: 56,
-    height: 56,
-    backgroundColor: '#299928',
-    borderRadius: 9999,
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 1,
-    position: 'relative'
   }
 })
 

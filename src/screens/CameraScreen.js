@@ -5,13 +5,24 @@ import {
   View
 } from 'react-native'
 import Camera from 'react-native-camera'
+import CloseCameraIcon from '../components/CloseCameraIcon'
 
 class CameraScreen extends Component<{}> {
   static navigationOptions = {
     drawerLockMode: 'locked-closed'
   }
 
+  takePicture() {
+    const options = {}
+    this.camera.capture({metadata: options})
+      .then((data) => {
+        console.log(data)
+      })
+      .catch(err => console.error(err))
+  }
+
   render() {
+    const that = this
     return (
       <View style={styles.container}>
         <Camera
@@ -20,19 +31,11 @@ class CameraScreen extends Component<{}> {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)}>
-            <Text style={styles.captureButton}>Lolo</Text>
-          </Text>
+          <CloseCameraIcon onPress={() => that.props.navigation.navigate('Home')} />
+          <Text style={styles.capture} onPress={this.takePicture.bind(this)} />
         </Camera>
       </View>
     )
-  }
-
-  takePicture() {
-    const options = {}
-    this.camera.capture({metadata: options})
-      .then((data) => console.log(data))
-      .catch(err => console.error(err))
   }
 }
 
@@ -48,22 +51,14 @@ const styles = StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 9999,
-    width: 64,
-    height: 64,
+    backgroundColor: 'rgba(41, 153, 40, 0.6)',
     padding: 10,
-    margin: 40
-  },
-  captureButton: {
-    width: 48,
-    height: 48,
+    margin: 24,
+    width: 72,
+    height: 72,
     borderRadius: 9999,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // padding: 10,
-    backgroundColor: '#000',
-    margin: 12
+    borderWidth: 5,
+    borderColor: '#fff'
   }
 })
 

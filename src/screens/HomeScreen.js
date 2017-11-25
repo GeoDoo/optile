@@ -3,8 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  TouchableHighlight
+  Image
 } from 'react-native'
 import CameraButton from '../components/CameraButton'
 import Welcome from '../components/Welcome'
