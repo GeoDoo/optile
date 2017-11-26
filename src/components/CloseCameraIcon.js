@@ -6,7 +6,6 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const CloseCameraIcon = (props) => {
-	console.log(props)
   return (
   	<TouchableOpacity onPress={props.onPress} style={styles.close} >
    		<Icon name="ios-close" size={64} color="#fff" />

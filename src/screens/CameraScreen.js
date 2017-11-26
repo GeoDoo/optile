@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native'
 import Camera from 'react-native-camera'
 import CloseCameraIcon from '../components/CloseCameraIcon'
@@ -12,13 +13,28 @@ class CameraScreen extends Component<{}> {
     drawerLockMode: 'locked-closed'
   }
 
+  state = {
+    imagePath: ''
+  }
+
   takePicture() {
     const options = {}
     this.camera.capture({metadata: options})
       .then((data) => {
-        console.log(data)
+        // console.log(data)
+        this.setState({
+          imagePath: data.path
+        })
       })
       .catch(err => console.error(err))
+  }
+
+  renderImageTaken() {
+    if (this.state.imagePath) {
+      return <Image style={styles.thumbNail} source={{uri: this.state.imagePath}} />
+    } else {
+      return
+    }
   }
 
   render() {
@@ -33,6 +49,7 @@ class CameraScreen extends Component<{}> {
           aspect={Camera.constants.Aspect.fill}>
           <CloseCameraIcon onPress={() => that.props.navigation.navigate('Home')} />
           <Text style={styles.capture} onPress={this.takePicture.bind(this)} />
+          {that.renderImageTaken()}
         </Camera>
       </View>
     )
@@ -59,6 +76,14 @@ const styles = StyleSheet.create({
     borderRadius: 9999,
     borderWidth: 5,
     borderColor: '#fff'
+  },
+  thumbNail: {
+    width: 100,
+    height: 100,
+    position: 'absolute',
+    zIndex: 1000,
+    top: 10,
+    left: 10
   }
 })
 
