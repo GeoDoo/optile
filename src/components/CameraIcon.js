@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const CameraIcon = () => {
   return (
-   	<Icon name="ios-camera" size={80} color="#299928" />
+   	<Icon name="ios-camera" size={72} color="#299928" />
   )
 }
 
